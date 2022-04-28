@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    
+
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/static/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/static/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="/static/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/static/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/static/mycss/footer.css">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+</head>
+
+<body class="layout-fixed sidebar-mini">
+    <div class="hold-transition layout-top-nav">
+        <div class="wrapper" id="page-container">
+            
+
+            <!-- Navbar -->
+            <nav class="main-header navbar navbar-expand-md navbar-light navbar-white" id="maninav">
+                <div class="container">
+                    <a href="../../index3.html" class="navbar-brand">
+                        <img src="/static/nsitf_logo/nsitf_logo.png" alt="AdminLTE Logo"
+                            class="brand-image img-circle elevation-3" style="opacity: .8">
+                        <span class="brand-text font-weight-light">NSITF Leave - 2.0</span>
+                    </a>
+
+                    <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
+                        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                        <!-- Left navbar links -->
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Help</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Download User Guide</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Contact Us</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                {% include 'messages.html' %}
+    
+            </nav>
+            <div class="container">
+                {% block content %}
+                {% endblock content %}
+            </div>
+            <!-- Main Footer -->
+            <footer class="main-footer" id="loginfooter">
+                <!-- To the right -->
+                <!-- <div class="float-right d-none d-sm-inline">
+                    nkemokongwu.com.ng
+                </div> -->
+                <!-- Default to the left -->
+                <strong>&copy; 2018
+                    <script>new Date().getFullYear() > 2010 && document.write("-" + new Date().getFullYear());</script>,
+                    Nigeria
+                    Social Insurance Trust Fund</strong> All rights
+                reserved.
+            </footer>
+        </div>
+
+        <!-- ./wrapper -->
+
+        <!-- REQUIRED SCRIPTS -->
+
+        <!-- jQuery -->
+        <script src="/static/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="/static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="/static/dist/js/adminlte.min.js"></script>
+        <!-- overlayScrollbars -->
+        <script src="/static/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="/static/dist/js/demo.js"></script>
+    </div>
+</body>
+
+</html>

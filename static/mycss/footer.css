@@ -1,0 +1,93 @@
+.main-footer  {
+     background-color:#009240;
+     color:whitesmoke ;
+}
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 1.5rem;    /* Footer height */
+}
+#loginfooter  {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+  color: white;
+  background-color:#009240;
+}
+#loginnav a{
+  color: #E77919;
+}
+/* background-color: #2F3E48; Very Nice Color
+background-color: #015F4F;
+*/
+#mainsidebar a{
+  color:white;
+ 
+  
+}
+
+#mainsidebar{
+   background-color: rgb(70, 95, 110);
+   
+  
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+    background-color: #2F3E48;
+   color:aquamarine;
+   border-color:#009240;
+}
+
+#logincard {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        
+}
+
+#maninav a{
+  color: #E77919;
+}
+
+.btn-primary
+{
+  background-color: #31A05F;
+  color:aliceblue;
+  border-color:#009240;
+}
+
+
+
+#logincardtitle,#card a,#card
+{
+  color:#009240;
+  
+}
+
+ .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+
+   background-color: #2F3E48;
+   color:aquamarine;
+   border-color:#009240;
+  }
+
+  /* .fa-stack[data-count]:after{
+    position:absolute;
+    right:-15%;
+    top:-10%;
+    content: attr(data-count);
+    font-size:55%;
+    padding:.6em;
+    border-radius:999px;
+    line-height:.75em;
+    color: white;
+    background:rgba(255,0,0,.85);
+    text-align:center;
+    min-width:2em;
+    font-weight:bold;
+  } */
+
+  

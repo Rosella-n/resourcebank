@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>S/N</th>
+            <th>Description</th>
+            <th>Date Created</th>
+            <th>Date Updated</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for question in questions %}
+
+
+
+
+        <tr id="description">
+            <td>{{ forloop.counter}}</td>
+            <td>{{ question.description }}</td>
+            <td>{{ question.created_on }}</td>
+            <td>{{ question.updated_on }}</td>
+            <td>
+                <a href="{% url 'edit_questions' question.pk  %}" class="btn btn-info">Edit</a>
+
+               
+                
+                <button class="btn btn-danger" onclick="delete_text('{{question.pk}}');"><i class="fa fa-trash"></i> Delete</button>
+                
+            </td>
+        </tr>
+            {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'my_questions'  %}" id="id_loadbtn" hidden>click</a>
+<script>
+    function hello_alert(desc) {
+        alert(desc)
+       
+    }
+</script>
+<script>
+    function delete_text(del_question) {
+        var loadbtn=document.getElementById('id_loadbtn')
+        swal({
+            title: "Confirm Submission",
+            text: "Submit These Details?",
+            icon: "warning",
+            buttons: [
+                'No, Do Not Submit',
+                'Yes, Please Submit!'
+            ],
+            dangerMode: true,
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+       $.ajax({
+            url: "{% url 'deletemypost' %}",
+            type: "POST", // or "get"
+            data: { pk: del_question },
+            headers: { 'X-CSRFToken': '{{ csrf_token }}' }, // for csrf token
+            success: function () {
+
+                swal("Success!", "Question Removed!", "success");
+
+                loadbtn.click();
+            }
+        })
+
+    }
+        })
+    }
+</script>
+<script>
+    $(function () {
+        $("#example1").DataTable
+            ({
+
+            });
+    });
+</script>
+{% endblock %}

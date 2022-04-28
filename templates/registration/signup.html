@@ -1,0 +1,99 @@
+{% extends 'menu_footer.html' %}
+
+
+<body class="layout-fixed sidebar-mini">
+    <div class="hold-transition layout-top-nav">
+        <div class="wrapper" id="page-container">
+          
+
+
+            {% block content %}
+            <body class="hold-transition login-page">
+                <div class="login-box" id="logincard">
+                    <div class="login-logo">
+                        <a id="logincardtitle"><b>NACOSS</b> ResourceBank</a>
+                    </div>
+                    <!-- /.login-logo -->
+                    <div class="card">
+                        <div class="card-body login-card-body">
+                            <p class="login-box-msg">SignUp For New Account</p>
+            
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.id_numb.errors }}
+                            <div class="input-group mb-3">
+                            
+                                {{ form.id_numb }}
+                                <div class="input-group-append" id="id_id_numb">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-user"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form.password1.errors }}
+                            <div class="input-group mb-3">
+                            
+                                {{ form.password1 }}
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-lock" id="togglePassword1"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form.password2.errors }}
+                            <div class="input-group mb-3">
+                            
+                                {{ form.password2 }}
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-lock" id="togglePassword2"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                            </div>
+                            <!-- /.col -->
+                            </div>
+                        </form>
+            
+                            
+            
+                            <p class="mb-1">
+                                <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                            </p>
+                            <p class="mb-0">
+                                <a href="{% url 'login' %}" class="text-center">Already Have An Account?</a>
+                            </p>
+                        </div>
+                        <!-- /.login-card-body -->
+                    </div>
+                </div>
+               
+          
+</body>
+<script>
+    const togglePassword = document.querySelector('#togglePassword1');
+    const password = document.querySelector('#id_password1');
+    togglePassword.addEventListener('click', function (e) {
+// toggle the type attribute
+const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+password.setAttribute('type', type);
+// toggle the eye slash icon
+this.classList.toggle('fa-lock-open');
+});
+</script>    
+
+<script>
+    const togglePassword2 = document.querySelector('#togglePassword2');
+    const password2 = document.querySelector('#id_password2');
+    togglePassword2.addEventListener('click', function (e) {
+// toggle the type attribute
+const type = password2.getAttribute('type') === 'password' ? 'text' : 'password';
+password2.setAttribute('type', type);
+// toggle the eye slash icon
+this.classList.toggle('fa-lock-open');
+});
+</script>    
+{% endblock  %}
+

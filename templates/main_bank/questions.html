@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+<div class="container-fluid">
+    <form class="d-flex">
+        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-info" type="submit">Search</button><br><br>
+    </form>
+</div>
+<form method="post" id="askquestionsform" class="needs-validation">
+    {% csrf_token %}
+    {{ form.description.label }}
+    {{form.description}}
+
+
+<button onclick="reload_page" type="submit" class="btn btn-warning">
+   Save
+</button>
+<a id="id_reload_page" hidden href="{% url 'questions' %}">hello</a>
+</form>
+<script>
+    function reload_page() {
+        document.getElementById('id_reload_page').click();
+    }
+</script>
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        swal("Empty Form Fields", "Sorry, All Fields In Red Must Be Completed", "error");
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+
+
+<style>
+    .swal-button--confirm {
+        background-color: #DD6B55;
+    }
+</style>
+
+
+
+
+<!-- <script>
+
+    document.querySelector('.custom-file-input').addEventListener('change', function (e) {
+        var fileName = document.getElementById("id_scanned_doc").files[0].name;
+        var nextSibling = e.target.nextElementSibling
+        nextSibling.innerText = fileName
+    })
+</script> -->
+<script>
+    document.querySelector('#askquestionsform').addEventListener('submit', function (e) {
+        var form = this;
+
+        e.preventDefault();
+        if (this.checkValidity() === true)
+            swal({
+                title: "Confirm Submission",
+                text: "Submit These Details?",
+                icon: "warning",
+                buttons: [
+                    'No, Do Not Submit',
+                    'Yes, Please Submit!'
+                ],
+                dangerMode: true,
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+
+                    form.submit();
+
+                }
+            })
+    });
+</script>
+{% endblock %}

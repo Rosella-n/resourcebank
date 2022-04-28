@@ -1,0 +1,196 @@
+{% extends 'menu_footer.html' %}
+
+    <title>{% block title %}
+        NACOSS | Login
+        {% endblock title %}</title>
+{% block content %}
+             
+<div id="login_error_div" style="display: none;" class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+    <strong><span id="error1"></span></strong>
+    <span id="error2"></span>
+    <button id="hide_msg" type="button" class="close"  aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+           
+{% if next %}
+    {% if user.is_authenticated %}
+    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+        <strong>Your account doesn't have access to this page. To proceed,</strong>please login with an account that has access.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+   
+    {% else %}
+    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+        <strong>Please login to see this page.</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+   
+    {% endif %}
+{% endif %}
+<body class="hold-transition login-page">
+    <div class="login-box" id="logincard">
+        <div class="login-logo">
+            <a id="logincardtitle"><b>NACOSS</b> ResourceBank</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+
+            <form id="loginform" method="post" class="needs-validation" novalidate action="{% url 'login' %}">
+                {% csrf_token %}
+                                 
+                    <div class="input-group mb-3">
+                       
+                        <input type="text" name="username" autofocus maxlength="254" placeholder="Email"
+                                     class="textinput textInput form-control" required id="id_username" />
+                                    
+                                    <div class="input-group-append" >
+                                        <div class="input-group-text">
+                                            <span class="fas fa-envelope"></span>
+                                        </div>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please Enter An Email
+                                      </div>
+                                </div>           
+                    
+                    
+                    <div class="input-group mb-3">
+                       
+                        <input type="password" name="password"  placeholder="Password"
+                        class="textinput textInput form-control" required id="id_password" />           
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock" id="togglePassword"></span>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback">
+                            Please Enter A Password
+                          </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">
+                                    Remember Me
+                                </label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block" 
+                            name="sign_in" id="sign_in">Sign In</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>               
+                
+                <input type="hidden" id="Urlhome" data-url="{% url 'home' %}" />
+
+                <div class="social-auth-links text-center mb-3">
+                    <p>- OR -</p>
+                    <a href="{% url 'password_reset' %}" class="btn btn-block btn-warning">
+                        <i class="fab fa-facebook mr-2"></i> Forgot Password
+                    </a>
+                    <a href="{% url 'signup' %}" class="btn btn-block btn-info">
+                        <i class="fab fa-google-plus mr-2"></i> Sign Up For A New Account
+                    </a>
+                </div>
+                <!-- /.social-auth-links -->
+
+                
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+    <script src="/static/plugins/jquery/jquery.min.js"></script>
+  
+  <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }else{
+                    sign_in_User()
+                }                
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+        </script>
+
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#id_password');
+        togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-lock-open');
+});
+    </script>    
+<script>
+    
+    $("#hide_msg").click(function (){
+       
+        $("#login_error_div").hide()
+       
+    })
+</script>
+<script>
+  
+    function sign_in_User(){
+        var url = $("#Urlhome").attr("data-url");
+        event.preventDefault();
+        event.stopPropagation();  
+        var username = ($('#id_username')).val();
+        var password = ($('#id_password')).val();  
+        $.ajax({
+        url: "{% url 'loginUser' %}",  
+        type: "POST", // or "get"
+        headers: {'X-CSRFToken': '{{ csrf_token }}'}, // for csrf token
+        
+        data:{
+        'username': username, 
+        'password':password,
+            },
+        
+            success: function loginResponse(response) {  
+               
+                if(response['code']=== 401){
+                   
+                    $('#login_error_div').show();
+                    $("#error1").text(response['message1']+' :')
+                    $("#error2").text(response['message2'])                      
+                         
+                } else{
+                    location.href=url;
+                }             
+                                                   
+ }
+
+ 
+          })
+     
+    }
+      
+    </script>
+    
+{% endblock  %}

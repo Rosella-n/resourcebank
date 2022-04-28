@@ -1,0 +1,33 @@
+{% extends 'menu_footer.html' %}
+
+    <title>{% block title %}
+        NSITF | Account Activation Done
+        {% endblock title %}</title>
+
+       
+<body class="layout-fixed sidebar-mini">
+    
+    <div class="hold-transition layout-top-nav">
+        <div class="wrapper" id="page-container">
+           
+
+            {% block content %}  
+            
+            <section class="content">
+              
+                <div class="container">
+                <small><h1 class="headline text-success" > Account Activation Successful</h1></small>
+                <div class="error-content">
+                                 
+                    <p><a href="{% url 'login' %}">Click here to login</a>
+                    </p>
+                  </div>
+        
+                 
+                
+                <!-- /.error-content -->
+              </div>
+              <!-- /.error-page -->
+            </section>
+            <!-- /.content -->
+            {% endblock %}       

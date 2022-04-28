@@ -1,0 +1,579 @@
+
+@media (min-width: 400px) and (max-width: 1200px){
+
+  #div_id_previous_year_days_remaining{
+    top: 25%;
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #div_id_current_year_days_remaining{
+    top: 35%;
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #div_id_leavetype{
+    top: 45%;
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #div_id_leavedate{
+    top:55%;
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #div_id_days{
+    top: 65%;
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #div_id_resume_date{
+    top: 75%;
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #div_id_notes{
+    top: 75%;
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+#div_id_address1{
+  top: 85%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#div_id_house_no{
+  top: 95%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#div_id_street{
+  top: 105%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+#div_id_district{
+  top: 115%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+#div_id_country{
+  top: 125%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#div_id_state{
+  top: 135%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+#div_id_local_council{
+  top: 145%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#div_id_phone{
+  top: 155%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+  #div_id_leavestatus{
+   position: absolute;
+   width:50%;
+   top: 25%;
+
+ }
+
+#div_id_department{
+  top: 175%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+ }
+ #div_id_last_changed_by{
+   top: 155%;
+   width:50%;
+   margin-left: auto;
+   margin-right: auto;
+
+ }
+ #div_id_rank{
+   top: 185%;
+   width:50%;
+   margin-left: auto;
+   margin-right: auto;
+ }
+#div_id_branch{
+  top: 195%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+
+ }
+
+ #div_id_last_changed_on{
+   position: absolute;
+   right: 10em;
+   width:30%;
+   top: 195%;
+
+ }
+
+#div_id_profile_pic{
+  top: 205%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+textarea.form-control {
+    height: 6em;}
+.btn-primary
+{
+  width: 30%;
+
+}
+
+
+#btn-save-changes{
+  top: 135%;
+  width:25%;
+  margin-left: 23%;
+  margin-right: auto;
+}
+
+#btn-back-currentleave{
+  top: 145%;
+  width:25%;
+  margin-left: 5%;
+  margin-right: auto;
+  }
+#profileimage{
+  top: 210%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#btnsaveprofile{
+  top: 230%;
+  width:30%;
+  margin-left: 35%;
+  margin-right: auto;
+
+}
+
+
+#btnendorse{
+
+  top: 410%;
+  width:30%;
+  margin-left: 40%;
+  margin-right: auto;
+}
+#btnreturn{
+
+  top: 415%;
+  width:30%;
+  margin-left: 40%;
+  margin-right: auto;
+
+}
+#btnreject{
+
+  top: 420%;
+  width:30%;
+  margin-left: 40%;
+  margin-right: auto;
+}
+
+
+input[type="password"],#id_username,input[type="email"],#id_staff_id
+{ width:60%;
+  margin-left: auto;
+  margin-right: auto;
+  border-color: green;
+}
+#txtnote{
+  position: absolute;
+  bottom: 10em;
+
+}
+#btn-back-previousleave{
+  position: absolute;
+  width: 15em;
+  top: 70%;
+  right: 10em;
+}
+#btnreturnhome{
+  width: 10em;
+  top: 20%;
+  left: 30%;
+}
+ #btnaddtaskqueue{
+  width: 10em;
+  top: 30%;
+  left: 10%;
+}
+thead{
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Condensed';
+  font-weight: 0.5em;
+  font-size: 1.5em;
+
+}
+
+
+td{
+  font-size: 1.2em;
+
+}
+
+small{
+  font-size: 1.0em;
+}
+
+#div_id_code{
+  top: 25%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#div_id_name{
+  top: 35%;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+}
+
+@media (min-width: 1201px) and (max-width:1800px){
+  #div_id_branchcode,
+  #div_id_rankcode,
+  #div_id_departmentcode,
+  #div_id_sendforendorse,
+  #div_id_sendforpending,
+  #div_id_sendforapproval,
+  #div_id_long_name,
+  #div_id_ufs_name,
+  #div_id_shortname,
+  #div_id_name,
+  #div_id_code,
+  #div_id_signed_by
+{
+  margin-left: auto;
+  margin-right: auto;
+  width:30%;
+}
+#div_id_is_department_endorse,
+#div_id_is_AdminHrUpdate,
+#div_id_is_AdminHrApprove,
+#div_id_is_HOD,
+#div_id_is_BM
+{
+  margin-left: 50%;
+  top: 300px;
+  width:30%;
+}
+
+#div_id_is_RM,
+#div_id_is_ED,
+#div_id_is_MD,
+#div_id_is_HQ_STAFF,
+#div_id_is_REGIONAL_STAFF,
+#div_id_is_BRANCH_STAFF,
+#div_id_is_BRANCH_SM_HR,
+#div_id_is_REGION_SM_HR,
+#div_id_is_BRANCH_PM_HR,
+#div_id_is_REGION_PM_HR{
+  margin-left: 10%;
+  top: 100px;
+  width:30%;
+}
+
+
+#div_id_first_name{
+  position: absolute;
+  left: 50%;
+  width:30%;
+  top: 35%;
+}
+#div_id_middle_name{
+  position: absolute;
+  left: 50%;
+  width:30%;
+  top: 45%;
+}
+#div_id_last_name{
+  position: absolute;
+  left: 50%;
+  width:30%;
+  top: 55%;
+}
+
+#btnaddnewuser{
+  left: 50%;
+  width:100%;
+  top: 15em;
+}
+  #div_id_address1,#div_id_leavestatus{
+   position: absolute;
+   right: 10em;
+   width:30%;
+   top: 25%;
+ }
+
+ #div_id_leavetype,#div_id_department{
+   position: absolute;
+   left:10em;
+   width:30%;
+   top: 25%;
+ }
+ #div_id_house_no,#div_id_last_changed_by{
+   position: absolute;
+   right: 10em;
+   width:30%;
+   top: 38%;
+ }
+ #div_id_days,#div_id_rank{
+   position: absolute;
+   left:10em;
+   width:30%;
+   top:55%;
+ }
+ #div_id_leavedate,#div_id_branch{
+   position: absolute;
+   left:10em;
+   width:30%;
+   top: 38%;
+
+ }
+
+ #div_id_district,#div_id_last_changed_on{
+   position: absolute;
+   right: 10em;
+   width:30%;
+   top: 50%;
+
+ }
+
+ #div_id_street{
+   position: absolute;
+   right: 10em;
+   width:30%;
+   top: 65%;
+
+ }
+
+
+#div_id_country{
+  position: absolute;
+  right: 10em;
+  width:30%;
+  top: 80%;
+
+}
+
+#div_id_state{
+  position: absolute;
+  right: 10em;
+  width:30%;
+  top:95%;
+
+}
+
+#div_id_local_council{
+  position: absolute;
+  right: 10em;
+  width:30%;
+  top: 110%;
+
+}
+
+#div_id_phone{
+  position: absolute;
+  right: 10em;
+  width:30%;
+  top: 125%;
+
+}
+
+
+#div_id_resume_date,#div_id_profile_pic{
+  position: absolute;
+  left:10em;
+  width:30%;
+  top: 70%;
+}
+
+#div_id_previous_year_days_remaining{
+  position: absolute;
+  left:10em;
+  top: 85%;
+  width:30%;
+}
+
+#div_id_current_year_days_remaining{
+  position: absolute;
+  left:10em;
+  top: 100%;
+  width:30%;
+}
+
+#div_id_notes{
+  position: absolute;
+  width: 25em;
+  top: 115%;
+  left:10em;
+}
+
+textarea.form-control {
+    height: 6em;}
+.btn-primary
+{
+  width: 30%;
+
+}
+#btn-save-changes{
+  position: absolute;
+  width: 15em;
+  top: 180%;
+  left:10em;
+}
+
+#btn-back-currentleave{
+  position: absolute;
+  width: 15em;
+  top: 180%;
+  left: 50em;
+}
+#div_id_leave_docs{
+  position: absolute;
+  width: 15em;
+  top: 135%;
+  left: 12%;
+  }
+
+#btnaddtaskqueue{
+  width: 15em;
+  top: 5em;
+  left:10em;
+}
+#btnreturnhome{
+  width: 15em;
+  top: 5em;
+  left: 30em;
+}
+#profileimage{
+  position: absolute;
+  top: 90%;
+  left: 10em;
+}
+#btnsaveprofile{
+position: absolute;
+  top: 120%;
+
+}
+
+#btnreject{
+  position: absolute;
+  top: 170%;
+  width: 20%;
+  left: 10em;
+}
+#btnreturn{
+  position: absolute;
+  top: 170%;
+  left: 35em;
+  width: 20%;
+
+}
+#btnviewleavedoc{
+  position: absolute;
+  top: 150%;
+  left: 35em;
+  width: 20%;
+}
+#btnendorse{
+  position: absolute;
+  top: 170%;
+  width: 20%;
+  right: 10em;
+}
+
+input[type="password"],#id_username,input[type="email"],#id_staff_id
+{ width:30%;
+  margin-left: auto;
+  margin-right: auto;
+  border-color: green;
+}
+#txtnote{
+  position: absolute;
+  bottom: 10em;
+
+}
+#btn-back-previousleave{
+  position: absolute;
+  width: 15em;
+  top: 70%;
+  right: 10em;
+}
+
+thead{
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Condensed';
+  font-weight: 0.5em;
+  font-size: 1.5em;
+
+}
+
+
+td{
+  font-size: 1.2em;
+
+}
+
+small{
+  font-size: 1.0em;
+
+}
+
+}

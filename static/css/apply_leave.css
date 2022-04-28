@@ -1,0 +1,56 @@
+
+a{
+  color: green;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Condensed';
+
+}
+
+#welcomeparagraph {
+  color: green;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Condensed';
+  font-size: 1.5em;
+}
+
+#loginfrmtext{
+  padding-top: 2%;
+  color: green;
+  font-size: 1.5em;
+}
+
+
+#homefrmtext{
+  padding-top: 2%;
+  color: green;
+  font-size: 2em;
+}
+
+/* #div_id_notes,#id_notes{
+height:calc(5%);
+} */
+
+  thead{
+    color: green;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Condensed';
+
+  }
+
+
+  td{
+
+    color: green;
+  }
+
+  small{
+
+    color: green;
+
+  }
+
+ 

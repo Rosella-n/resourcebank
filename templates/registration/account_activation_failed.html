@@ -1,0 +1,33 @@
+{% extends 'menu_footer.html' %}
+
+    <title>{% block title %}
+        NSITF | Account Activation Failed
+        {% endblock title %}</title>
+
+       
+<body class="layout-fixed sidebar-mini">
+    
+    <div class="hold-transition layout-top-nav">
+        <div class="wrapper" id="page-container">
+           
+
+            {% block content %}  
+            
+            <section class="content">
+              
+                <div class="container">
+                <small><h1 class="headline text-danger" > Activation Failed</h1></small>
+                <div class="error-content">
+                  <h3> <p>Looks like you have an Invalid Link. Perharps it is expired or you have used it before
+                    </p></h3>               
+                   
+                  </div>
+        
+                 
+                
+                <!-- /.error-content -->
+              </div>
+              <!-- /.error-page -->
+            </section>
+            <!-- /.content -->
+            {% endblock %}       

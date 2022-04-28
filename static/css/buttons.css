@@ -1,0 +1,55 @@
+
+
+.btn-default,.btn-primary,#btn-apply,dropdow,.btn-block
+{
+  background-color: #31A05F;
+  color:aliceblue;
+  border-color: green;
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+
+  background-color: #2F3E48;
+  color:aquamarine;
+  border-color: green;
+ }
+
+ .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+
+   background-color: #2F3E48;
+   color:aquamarine;
+   border-color: green;
+  }
+
+.btn-block:hover, .btn-block:focus, .btn-block:active, .btn-block.active, .open .dropdown-toggle.btn-block {
+
+   background-color: #2F3E48;
+   color:aquamarine;
+   border-color: green;
+  }
+
+ #btn-apply:hover, #btn-apply:focus, #btn-apply:active, #btn-apply.active, .open .dropdown-toggle#btn-apply {
+
+   background-color: #2F3E48;
+   color:aquamarine;
+   border-color: green;
+  }
+
+ #btn-cancel{
+   background-color: #EA7614;
+
+    }
+
+   
+.card-primary:not(.card-outline)>.card-header {
+    background-color: #009240;
+}
+
+.badge-success {
+    color: #fff;
+    background-color: #28a745;
+}
+
+.badge-pending {
+    color: #fff;
+    background-color: #EA7614;
+}

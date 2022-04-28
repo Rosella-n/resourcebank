@@ -1,0 +1,128 @@
+h2{
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 300;
+  font-size: 5em;
+}
+
+
+#landingref{
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Condensed';
+
+  font-weight: 50;
+  font-size:2em;
+}
+
+#hdlanding{
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Condensed';
+  color: green;
+  font-weight: 200;
+  font-size: 2em;
+}
+
+#hdlanding2{
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Condensed';
+  color: green;
+  font-weight: 150;
+  font-size: 1.5em;
+}
+
+
+#logo {
+	vertical-align:middle;
+}
+#navbarDropdown{
+  font-family: 'Roboto Condensed';
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 400;
+
+}
+
+  .navbar-brand span {
+  	line-height:1.2;
+  	font-weight: 200;
+  	display:inline-block;
+  	vertical-align:middle;
+  	padding:0 0 0 10px;
+    color: #FFFFFF;
+    font-size: 0.7em;
+  }
+  .navbar-brand b {
+  	display:block;
+  	line-height:1;
+    color: white;
+    font-size: 20px;
+  }
+  .my-nav{
+  	margin-left:auto;background-color:#31A05F;
+  }
+
+  .navbar-brand {
+    font-family: 'Peralta', cursive;
+  }
+.my-nav .nav-item:hover{color: aquamarine;}
+.my-nav .nav-item {color: aquamarine;}
+.my-nav .nav-link:hover{color: aquamarine;}
+/* .my-nav .dropdown-menu{background-color: #31A05F;} */
+#homelink
+{
+  /* background-color: #31A05F; */
+  color:#FFFFFF;
+
+
+}
+#rightmenuitem{
+  	margin-right:auto;
+}
+
+
+.navbar-light .navbar-nav .active>.nav-link,.navbar-light .navbar-nav .nav-link{
+  color: white;font-size: 16px;text-decoration-color: black;
+}
+
+
+.dropdown-item {
+  font-size: 16px;
+
+
+}
+
+
+/* #navbarDropdown , */
+
+/* .dropdown-item:focus,
+
+:active{
+  color: aquamarine;
+
+
+  }
+
+
+.open .dropdown-toggle.dropdown-item */
+
+.dropdown-item:hover, .dropdown-item:focus, .dropdown-item:active, .dropdown-item.active, .open .dropdown-toggle.dropdown-item {
+
+  background-color: #2F3E48;
+  color:aquamarine;
+  border-color: green;
+ }
+
+
+
+.navbar-brand {
+  font-family: 'Peralta', cursive;
+}
+

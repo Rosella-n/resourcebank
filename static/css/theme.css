@@ -1,0 +1,14 @@
+#btnsaveprofile{
+  left: 10em;
+  width: 20em;
+}
+
+#ranktext,#sentfromhead{
+color:green;
+text-align:center;
+}
+
+#notaskmsg{
+color:orange;
+}
+
