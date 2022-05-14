@@ -12,10 +12,12 @@
 
 body {
   padding-top: 60px;
+  background-image: url('/static/project_logo/backdrop.png');
 }
 
 .preview img {
     max-height:50px;
 }
-
-
+.img{
+  opacity: 0.3;
+}

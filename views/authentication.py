@@ -10,6 +10,8 @@ from authenticate.models import (User, Local_Government,State,Country,User_Info,
 Token,)
 from django.utils import timezone
 import sweetify
+
+from resourcebank.models import Questions
 now = timezone.now()
 from django.db.models import Q,Avg, Count, Min, Sum
 from django.contrib.auth.signals import user_logged_in, user_logged_out
@@ -92,7 +94,7 @@ def login_request(request):
 @login_required
 def home(request):
     user_id=request.user.id_numb#Get Cuurent User Staff Id        
-         
+    questions=Questions.objects.filter(pk=23)    
     return render(request, 'authenticate/home.html', {})
 def signup(request):    
     if request.method == 'POST':

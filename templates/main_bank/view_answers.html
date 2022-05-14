@@ -12,7 +12,7 @@
     </thead>
     <tbody>
 
-    {% for question in questions %}
+        {% for answer in answers %}
 
 
 
@@ -20,32 +20,25 @@
         <tr id="description">
             <td>{{ forloop.counter}}</td>
             <td>
-               <a href="{% url 'edit_questions' question.pk  %}"> {{ question.description }}</a>
+                <a href="{% url 'answers' answer.pk  %}"> {{ answer.answer }}</a>
             </td>
-            <td> {{ question.created_on }}</td>
-            <td>{{ question.updated_on }}</td>
-            <td>
-                <a href="{% url 'edit_questions' question.pk  %}" class="btn btn-info">Edit</a>
-
-               
-                
-                <button class="btn btn-danger" onclick="delete_text('{{question.pk}}');"><i class="fa fa-trash"></i> Delete</button>
-                
-            </td>
+            <td> {{ answer.created_on }}</td>
+            <td>{{ answer.updated_on }}</td>
+           
         </tr>
-            {% endfor %}
+        {% endfor %}
     </tbody>
 </table>
 <a href="{% url 'my_questions'  %}" id="id_loadbtn" hidden>click</a>
 <script>
     function hello_alert(desc) {
         alert(desc)
-       
+
     }
 </script>
 <script>
     function delete_text(del_question) {
-        var loadbtn=document.getElementById('id_loadbtn')
+        var loadbtn = document.getElementById('id_loadbtn')
         swal({
             title: "Confirm Submission",
             text: "Submit These Details?",
@@ -57,20 +50,20 @@
             dangerMode: true,
         }).then(function (isConfirm) {
             if (isConfirm) {
-       $.ajax({
-            url: "{% url 'deletemypost' %}",
-            type: "POST", // or "get"
-            data: { pk: del_question },
-            headers: { 'X-CSRFToken': '{{ csrf_token }}' }, // for csrf token
-            success: function () {
+                $.ajax({
+                    url: "{% url 'deletemypost' %}",
+                    type: "POST", // or "get"
+                    data: { pk: del_question },
+                    headers: { 'X-CSRFToken': '{{ csrf_token }}' }, // for csrf token
+                    success: function () {
 
-                swal("Success!", "Question Removed!", "success");
+                        swal("Success!", "Question Removed!", "success");
 
-                loadbtn.click();
+                        loadbtn.click();
+                    }
+                })
+
             }
-        })
-
-    }
         })
     }
 </script>

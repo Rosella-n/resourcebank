@@ -1,5 +1,5 @@
 .main-footer  {
-     background-color:#009240;
+     background-color:#1383a5;
      color:whitesmoke ;
 }
 #page-container {
@@ -16,10 +16,10 @@
   width: 100%;
   height: 2.5rem;            /* Footer height */
   color: white;
-  background-color:#009240;
+  background-color:#1f7eaa;
 }
 #loginnav a{
-  color: #E77919;
+  color: #50b4ee;
 }
 /* background-color: #2F3E48; Very Nice Color
 background-color: #015F4F;
@@ -38,7 +38,7 @@ background-color: #015F4F;
 .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
     background-color: #2F3E48;
    color:aquamarine;
-   border-color:#009240;
+   border-color:#50aab6;
 }
 
 #logincard {
@@ -49,21 +49,21 @@ background-color: #015F4F;
 }
 
 #maninav a{
-  color: #E77919;
+  color: #527596;
 }
 
 .btn-primary
 {
-  background-color: #31A05F;
+  background-color: #018892;
   color:aliceblue;
-  border-color:#009240;
+  border-color:#159daf;
 }
 
 
 
 #logincardtitle,#card a,#card
 {
-  color:#009240;
+  color:#5aa4b1;
   
 }
 
@@ -71,8 +71,9 @@ background-color: #015F4F;
 
    background-color: #2F3E48;
    color:aquamarine;
-   border-color:#009240;
+   border-color:#5aa4b1;
   }
+  
 
   /* .fa-stack[data-count]:after{
     position:absolute;

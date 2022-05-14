@@ -4,136 +4,234 @@
     NACOSS | Home
     {% endblock title %}</title>
 {% block content %}
+<br>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div class="row g-3">
+  <div class="col-sm-7">
+    <input type="text" maxlength="80" id="id_searchbox" style="font-size: 18pt" class="form-control" placeholder="Search" aria-label="Search">
+  </div>
+<div class="col-auto">
+  <button type="button" id="id_searchclick" class="btn btn-info" onclick="buttonCode();" hidden>Submit</button>
+</div>
+</div>
+ <br><br>
 
-<div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h4 class="m-0 text-dark"> {{user.first_name|title}} {{user.last_name|title}}'s Dashboard</h4>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{%url 'home' %}">Home</a></li>
-            <!-- <li class="breadcrumb-item active">Dashboard v1</li> -->
-          </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>  
-  {% for detail in user.leave_set.all %}
-  {% if detail.leavestatus_id > 5 and detail.leavestatus_id < 8 %}
-<input type="text" class="form-control float-right" id="id_leavedate" name="id_leavedate" 
- hidden value="{{ detail.leavedate }}">
+<div class="card">
+  <div class="card-header">
+    <h2 style="text-align: center;">Results</h2>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+ 
+<table id="example1" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>
+        <h2> No </h2>
+      </th>
+      <th class="text-center">
+        <h2>Description</h2>
+      </th>
+    <th class="text-center">
+      <h2>Author</h2>
+      </th>
+      <th class="text-center">
+        <h2>Date Created</h2>
+        </th>
+        <th class="text-center">
+          <h2>Date Updated</h2>
+    </th>
+    </tr>
+  </thead>
 
- <input type="text" class="form-control float-right" 
- hidden id="id_days" name="days" value="{{ detail.days }}">
+  <tfoot>
+    <tr>
+    <th>
+      <h2> No </h2>
+    </th>
+    <th class="text-center">
+      <h2>Description</h2>
+    </th>
+    <th class="text-center">
+      <h2>Author</h2>
+    </th>
+    <th class="text-center">
+      <h2>Date Created</h2>
+    </th>
+    <th class="text-center">
+      <h2>Date Updated</h2>
+    </th>
+    </tr>
+  </tfoot>
+</table>
  
- {% endif %}
+<!-- <label  for="sorting">Sort by:</label>
 
- {% endfor %}
+<select id="id_sort" name="sorting" id="sorting">
+  <option value= "1">Highest rating</option>
+  <option value="2">Lowest rating</option>
+  <option value="3">Date modified(newest)</option>
+  <option value="4">Date created(oldest)</option>
+</select> -->
  
- 
- 
+<!-- <img src="/static/project_logo/backdrop.png" alt="image not found"> -->
  
     <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-info" style="height: 11em;">
-            
-                <div class="inner">
-                  <h5>Previous Applications</h5> 
-                  {% for thisuser in user.submitedby.all %}   
-                  
-                                    
-                  
-                  <h4>{{thisuser.previous_leave_count}} Application{{ thisuser.previous_leave_count|pluralize }}</h4>
-                   
-                                   
-
-     
-    {% endfor %} 
-                 
-               
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-success" style="height: 11em;">
-                <div class="inner">
-                  <h5>Current Leave</h5>    
-                  {% for detail in user.leave_set.all %}
-                  {% if detail.leavestatus_id > 5 and detail.leavestatus_id < 8 %}
-                                 
-                  
-                  <h4>{{ detail.days }} Day{{ detail.days|pluralize }}</h4>
-                   
-                    <h5>{{ detail.resume_date|timeuntil }} Remaining</h5> 
-                  {% endif %}
-                  {% endfor %}  
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                <a id="currentleavelink" href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-warning" style="height: 11em;">
-                <div class="inner">
-                  <h5>Profile</h5>
-  
-                  <h4>Last Login</h4>
-                  <h5>{{user.my_last_login}}</h5>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-danger" style="height: 11em;">
-                <div class="inner">
-                                  
-                  <h5>Pending Tasks</h5>
-                  
-  
-                  <h4>{{ mytasks.Task_Count }} Task{{ mytasks.Task_Count|pluralize }}</h4>
-                         
-                </div>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                <a id="my_task_queues" href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-          </div>
-          <!-- /.row -->
-          <!-- Main row -->
-         
-          <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
+    
        
              </section>
       <!-- /.content -->
 
 
+<!-- <script>
 
+  function search_questions() {
+    // var search_text = document.getElementById('id_searchbox')
+    var search_text = ($('#id_searchbox').val())
+    
+        $.ajax({
+          url: "{% url 'get_search_results' %}",
+          type: "GET", // or "get"
+          data: { 'Question': search_text },
+          // headers: { 'X-CSRFToken': '{{ csrf_token }}' }, // for csrf token
+          success: function () {
+            // console.log(search_text)
+            // swal("Success!", "Question Removed!", "success");
+
+            // loadbtn.click();
+          }
+        })
+
+      }
+   
+</script> --> 
+<script>
+  $(document).ready(function () {
+    $(".card").hide()
+    });
+</script>
+
+
+
+<script>
+  $.getScript("//cdn.datatables.net/plug-ins/1.10.21/dataRender/datetime.js");
+  $.getScript("//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js");
+  $.getScript("//cdn.datatables.net/plug-ins/1.10.21/sorting/datetime-moment.js");
+
+
+
+  $.getScript("//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js");
+  $.getScript("//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js");
+  $.getScript("//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js");
+  $.getScript("//cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js");
+
+
+  $.getScript("//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css");
+  $.getScript("//cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css");
+
+  
+
+  function loadtable() {
+   
+  
+    // $body = $("body");
+
+    var search_text = ($('#id_searchbox').val())
+    console.log(search_text)
+    
+    
+    // { $body.addClass("loading"); };
+    $.ajax({
+      'url': "{% url 'get_search_results' %}",
+      'method': "GET",
+      'contentType': 'application/json',
+      data: { 'Question': search_text},
+    }).done(function (data) {
+      // { $body.removeClass("loading"); }
+      $('#example1').dataTable({
+        "autoWidth": false,
+        "aaData": data,
+        stateSave: true,
+        "bDestroy": true,
+        "columns": [
+          { "data": "serial_no" },
+          { "data": "description" },
+          { "data": "author" },
+          { "data": "created_on" },
+          { "data": "updated_on" },
+          
+
+        ],
+        
+        columnDefs: [
+          {
+            "searchable": true,
+            "orderable": true,
+            targets: 1,
+            render: function (data, type, row, meta, rowIdx) {
+              // <h1>
+              //   <a href="{% url 'answers' 23 %}">{{ question.description | title }}</a>
+              // </h1>
+              var infoUrl = "{% url 'answers' 1 %}".replace('1', row['pk']);
+
+              {
+                data ='<h1>'+'<a href=' + infoUrl + ' " target="_new"> ' + row['description'] +'</a>'+'</h1>' ;
+              }
+              return data;
+            }
+
+          },
+          {
+            "searchable": true,
+            "orderable": true,
+                 
+            
+            
+
+
+          },
+
+
+        ]
+        
+      })
+    })
+  }
+
+</script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+  $(document).ready(function () {
+    // To hide the table
+    
+    // To show the table
+    $(".btn").click(function () {
+      $(".card").show("fast");
+    });
+  }
+  )
+
+</script>
+
+<script>
+  document.getElementById("id_searchbox")
+      .addEventListener("keyup", function (event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+          document.getElementById("id_searchclick").click();
+        }
+      });
+
+    function buttonCode() {
+      loadtable();
+    }
+</script>
+<!-- <script>
+  $('#id_sort').on('change', function () {
+    loadtable();
+   
+    });
+</script> -->
 {% endblock content %}
 
 

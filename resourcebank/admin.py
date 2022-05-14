@@ -5,3 +5,8 @@ class QuestionsAdmin(admin.ModelAdmin):
     list_display = ('description','created_on','updated_on','author',)
     list_per_page = 30
 admin.site.register(Questions,QuestionsAdmin)
+
+class AnswersAdmin(admin.ModelAdmin):
+    list_display = ('answer','created_on','updated_on','author',)
+    list_per_page = 30
+admin.site.register(Answers,AnswersAdmin)
