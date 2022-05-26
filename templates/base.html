@@ -265,7 +265,7 @@
                                 <i class="nav-icon fas fa-book"></i>
                                 
                                 <p>
-                                    Staff Matters
+                                    MaterialBank
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -277,7 +277,7 @@
                                         <a href="{% url 'home' %}" class="nav-link">
                                             <i class="nav-icon fas fa-pencil-alt"></i>
                                             
-                                            <p>Uncompleted Uploads</p>
+                                            <p>Upload </p>
                                         </a>
                                     </li>
                                 </li>
@@ -286,39 +286,22 @@
                                         <i class="nav-icon fa fa-cloud-upload"></i>
                                          
                                         <p>
-                                            Completed Uploads
+                                            Download
                                             
                                         </p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <li class="nav-item">
-                                        <a href="{% url 'home' %}" class="nav-link">
-                                            <i class="nav-icon fas fa-clipboard-check"></i>
-                                           
-                                            <p>Approvals</p>
-                                        </a>
-                                    </li>
-                                </li>
+                                
                                              
                                         
                                       
                             </ul>
                         </li>                     
-                        <li class="nav-item">
-                            <a href="{% url 'home' %}" class="nav-link">
-                                <i class="fas fa-list-alt nav-icon"></i>
-                               
-                                <p>Task Queue                                                                  
-                                                                                              
-                                                                                       
-                                    <span class="badge badge-warning right">{{my_queues_count_total}}</span>
-                                  
-                                    
-                                </p>
-                            </a>
+                        
+                        
+                        
                            
-                        </li>  
+                    
                         {% if user.is_authenticated and user.is_HOD or user.is_Ict_Admin or user.is_Sys_Admin %}
                         
                         <li class="nav-item has-treeview">

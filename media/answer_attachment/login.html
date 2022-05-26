@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Login Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+	<link rel="stylesheet" href="/static/css/login.css">
+
+	</head>
+	<body class="img js-fullheight" style="background-image: url(/static/images/nnewi.jpg);">
+        <div id="login_error_div" style="display: none;" class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+            <strong><span id="error1"></span></strong>
+            <span id="error2"></span>
+            <button id="hide_msg" type="button" class="close"  aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+                   
+        {% if next %}
+            {% if user.is_authenticated %}
+            <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                <strong>Your account doesn't have access to this page. To proceed,</strong>please login with an account that has access.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+           
+            {% else %}
+            <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                <strong>Please login to see this page.</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+           
+            {% endif %}
+        {% endif %}
+        <form id="loginform" method="post" class="needs-validation" novalidate action="{% url 'login' %}">
+            {% csrf_token %}
+        
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Welcome!</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+		      	<h3 class="mb-4 text-center">Have an account?</h3>
+		      	<form action="#" class="signin-form">
+		      		<div class="form-group">
+		      			<input type="text" name="username" class="form-control" autofocus maxlength="254" placeholder="Email" required id="id_username">
+                          <div class="invalid-feedback">
+                            Please Enter An Email
+                          </div>
+                    </div>
+	            <div class="form-group">
+                    
+                
+
+	              <input type="password" name="password"  placeholder="Password"
+                  required id="id_password" class="form-control"  required/>
+                 
+                  <span id="togglePassword" toggle="#password-field" class="fa fa-eye field-icon toggle-password"></span>
+                  <div class="invalid-feedback">
+                    Please Enter A Password
+                  </div>
+                </div>
+	            <div class="form-group">
+	            	<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+	            </div>
+                
+	            <div class="form-group d-md-flex">
+	            	<div class="w-50">
+		            	<label class="checkbox-wrap checkbox-primary">Remember Me
+									  <input type="checkbox" checked>
+									  <span class="checkmark"></span>
+									</label>
+								</div>
+
+								<div class="w-50 text-md-right">
+									<a href="{% url 'password_reset' %}" style="color: #fff">Forgot Password</a>
+								</div>
+	            </div>
+	          </form>
+	          <p class="w-100 text-center">&mdash; Or &mdash;</p>
+	          <div class="form-group">
+                <a href="{% url 'signup' %}" style="background-color: #5BC0DE;" class="form-control btn btn-warning submit px-3">
+                    Sign Up 
+                </a>
+            </div>
+            
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+</form>
+<input type="hidden" id="Urlhome" data-url="{% url 'home' %}" />
+	<script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/popper.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/main.js"></script>
+
+	</body>
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#id_password");
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
+    </script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }else{
+                    sign_in_User()
+                }                
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+        </script>
+
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#id_password');
+        togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-lock-open');
+});
+    </script>    
+<script>
+    
+    $("#hide_msg").click(function (){
+       
+        $("#login_error_div").hide()
+       
+    })
+</script>
+<script>
+  
+    function sign_in_User(){
+        var url = $("#Urlhome").attr("data-url");
+        event.preventDefault();
+        event.stopPropagation();  
+        var username = ($('#id_username')).val();
+        var password = ($('#id_password')).val();  
+        $.ajax({
+        url: "{% url 'loginUser' %}",  
+        type: "POST", // or "get"
+        headers: {'X-CSRFToken': '{{ csrf_token }}'}, // for csrf token
+        
+        data:{
+        'username': username, 
+        'password':password,
+            },
+        
+            success: function loginResponse(response) {  
+               
+                if(response['code']=== 401){
+                   
+                    $('#login_error_div').show();
+                    $("#error1").text(response['message1']+' :')
+                    $("#error2").text(response['message2'])                      
+                         
+                } else{
+                    location.href=url;
+                }             
+                                                   
+ }
+
+ 
+          })
+     
+    }
+      
+    </script>
+</html>
+

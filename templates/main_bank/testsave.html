@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" id="answerform" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.suggestion.label }}
+    {{form.suggestion}}
+    {{form.add_file}}
+
+
+    <button type="submit" class="btn btn-info">
+        Save
+    </button>
+</form>
+
+{% endblock %}

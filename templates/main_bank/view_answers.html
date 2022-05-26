@@ -1,34 +1,270 @@
 {% extends 'base.html' %}
 {% block content %}
-<table id="example1" class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>S/N</th>
-            <th>Description</th>
-            <th>Date Created</th>
-            <th>Date Updated</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
 
-        {% for answer in answers %}
+{% for question in questions %}
+<input type="text" id="id_questionid" value="{{ question.pk }}" hidden>
+{% endfor %}
 
 
-
-
-        <tr id="description">
-            <td>{{ forloop.counter}}</td>
-            <td>
-                <a href="{% url 'answers' answer.pk  %}"> {{ answer.answer }}</a>
-            </td>
-            <td> {{ answer.created_on }}</td>
-            <td>{{ answer.updated_on }}</td>
-           
-        </tr>
+<div class="card" >
+    <div class="card-header">
+        {% for question in questions %}
+        <h2 style="text-align: center;">{{ question.description.title }}</h2>
         {% endfor %}
-    </tbody>
-</table>
+    </div>
+    
+    <!-- /.card-header -->
+    <div class="card-body">
+
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <h2> No </h2>
+                    </th>
+                    <th class="text-center">
+                        <h2>Description</h2>
+                    </th>
+                    <th class="text-center">
+                        <h2>Author</h2>
+                    </th>
+                    <th class="text-center">
+                        <h2>Date Created</h2>
+                    </th>
+                    <th class="text-center">
+                        <h2>Date Updated</h2>
+                    </th>
+                </tr>
+            </thead>
+
+            <tfoot>
+                <tr>
+                    <th>
+                        <h2> No </h2>
+                    </th>
+                    <th class="text-center">
+                        <h2>Description</h2>
+                    </th>
+                    <th class="text-center">
+                        <h2>Author</h2>
+                    </th>
+                    <th class="text-center">
+                        <h2>Date Created</h2>
+                    </th>
+                    <th class="text-center">
+                        <h2>Date Updated</h2>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+        <label  for="sorting">Sort by:</label>
+        
+        <select id="id_sort" name="sorting" >
+          <option value= "1">Highest rating</option>
+          <option value="2">Lowest rating</option>
+          <option value="3">Most Recent Answer</option>
+          <option value="4">Oldest Answer</option>
+        </select>
+
+        
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+  Answer question
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+           
+            <form method="post" id="answerform" class="needs-validation" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.answer.label }}
+                {{form.answer}}
+                {{form.file}}
+            
+            
+                <button  type="submit" class="btn btn-info">
+                    Save
+                </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+   
+    </div>
+</div>
+
+<script>
+    $('[data-dismiss=modal]').on('click', function (e) {
+            var $t = $(this),
+                target = $t[0].href || $t.data("target") || $t.parents('.modal') || [];
+
+            $(target)
+                .find("input,textarea,select")
+                .val('')
+                .end()
+                .find("input[type=file]")
+                .prop("")
+                .end();
+        })
+</script>
+
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        swal("Empty Form Fields", "Sorry, All Fields In Red Must Be Completed", "error");
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<script>
+    document.querySelector('#answerform').addEventListener('submit', function (e) {
+        var form = this;
+
+        e.preventDefault();
+        if (this.checkValidity() === true)
+            swal({
+                title: "Confirm Submission",
+                text: "Submit These Details?",
+                icon: "warning",
+                buttons: [
+                    'No, Do Not Submit',
+                    'Yes, Please Submit!'
+                ],
+                dangerMode: true,
+            }).then(function (isConfirm) {
+                if (isConfirm) {
+
+                    form.submit();
+
+                }
+            })
+    });
+</script>
+
+<script>
+    $.getScript("//cdn.datatables.net/plug-ins/1.10.21/dataRender/datetime.js");
+    $.getScript("//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js");
+    $.getScript("//cdn.datatables.net/plug-ins/1.10.21/sorting/datetime-moment.js");
+
+
+
+    $.getScript("//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js");
+    $.getScript("//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js");
+    $.getScript("//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js");
+    $.getScript("//cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js");
+
+
+    $.getScript("//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css");
+    $.getScript("//cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css");
+
+    function loadtable() {
+
+
+        // $body = $("body");
+
+        var search_text = ($('#id_questionid').val())
+        
+
+        var dropdown = ($('#id_sort').val())
+        
+        // { $body.addClass("loading"); };
+        $.ajax({
+            'url': "{% url 'get_answer' %}",
+            'method': "GET",
+            'contentType': 'application/json',
+            data: { 'Question': search_text, 'Dropdown': dropdown},
+        }).done(function (data) {
+            // { $body.removeClass("loading"); }
+            $('#example1').dataTable({
+                "autoWidth": false,
+                "aaData": data,
+                stateSave: true,
+                "bDestroy": true,
+                "columns": [
+                    { "data": "serial_no" },
+                    { "data": "description" },
+                    { "data": "author" },
+                    { "data": "created_on" },
+                    { "data": "updated_on" },
+
+
+                ],
+                columnDefs: [
+                    {
+                        "searchable": true,
+                        "orderable": true,
+                        targets: 1,
+                        render: function (data, type, row, meta, rowIdx) {
+                            // <h1>
+                            //   <a href="{% url 'answers' 23 %}">{{ question.description | title }}</a>
+                            // </h1>
+                            var infoUrl = "{% url 'home' %}".replace('1', row['pk']);
+                                                                                        // <a href="#" onclick="displal_alert();">hey its me</a>
+                            { 
+                               data = '<h4>' + '<a href=' + infoUrl + ' " target="_new"> ' + row['description'] + '</a>' + '</h4>';
+                            }
+                            return data;
+                        }
+
+                    },
+                    {
+                        "searchable": true,
+                        "orderable": true,
+
+
+
+
+
+                    },
+
+
+                ]
+
+            })
+        })
+    }
+
+
+</script>
+
+        
+<script type="text/javascript">
+    $('#id_sort').on('change', function () {
+        loadtable();
+    });
+</script>
+
+
+       
+    
+
 <a href="{% url 'my_questions'  %}" id="id_loadbtn" hidden>click</a>
 <script>
     function hello_alert(desc) {
@@ -37,36 +273,12 @@
     }
 </script>
 <script>
-    function delete_text(del_question) {
-        var loadbtn = document.getElementById('id_loadbtn')
-        swal({
-            title: "Confirm Submission",
-            text: "Submit These Details?",
-            icon: "warning",
-            buttons: [
-                'No, Do Not Submit',
-                'Yes, Please Submit!'
-            ],
-            dangerMode: true,
-        }).then(function (isConfirm) {
-            if (isConfirm) {
-                $.ajax({
-                    url: "{% url 'deletemypost' %}",
-                    type: "POST", // or "get"
-                    data: { pk: del_question },
-                    headers: { 'X-CSRFToken': '{{ csrf_token }}' }, // for csrf token
-                    success: function () {
+    function display_alert() {
+        alert("Hey!! you just clicked an answer")
 
-                        swal("Success!", "Question Removed!", "success");
-
-                        loadbtn.click();
-                    }
-                })
-
-            }
-        })
     }
 </script>
+
 <script>
     $(function () {
         $("#example1").DataTable
@@ -75,4 +287,107 @@
             });
     });
 </script>
+<script>
+    $(document).ready(function () {
+           loadtable();
+        });
+</script>
+<!-- {% for answer in answers %}
+<a href="#" onclick="hello_alert('{{ answer.pk }}');">hi</a>
+{% endfor %} -->
+<script>
+function check_rating() {
+    var answer_id=10
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'check_ratingstatus' %}",
+        data: {
+        
+            'Answer_ID': answer_id,
+        },
+
+        success: function (response) {
+
+            if (!response["valid"]) {
+                // event.preventDefault();
+                // swal({
+                //     title: "Existing Access!",
+                //     text: 'Sorry The User Already Has Access To This Queue',
+                //     icon: "error",
+                //     closeModal: false,
+                // })
+            } else {
+                swal({
+                    title: "Confirm Submission",
+                    text: add_msg,
+                    icon: "warning",
+                    buttons: [
+                        'No, Do Not Submit',
+                        'Yes, Go Ahead!'
+                    ],
+                    dangerMode: true,
+                }).then(function (isConfirm) {
+                    if (isConfirm) {
+
+                        rate_answer();
+
+                    }
+                })
+            }
+        },
+        error: function (response) {
+            console.log(response)
+        }
+    })
+}
+
+</script>
+<script>
+    function rate_answer() {
+        var rating=($ ('#id_answer_rating option:selected').val())
+        var answer_id = 10
+        event.preventDefault();
+          $.ajax({
+            url: "{% url 'rateanswer' %}",
+            type: "POST", // or "get"
+            headers: { 'X-CSRFToken': '{{ csrf_token }}' }, // for csrf token
+            data: {
+                'Answer_ID': answer_id,
+                'Rating': rating,
+            },
+
+            success: function (response) {
+
+                if (response["valid"]) {
+                    event.preventDefault();
+                    swal({
+                        title: "Success!",
+                        text: add_msg,
+                        icon: "success",
+                        //  closeOnConfirm: false,
+                    })
+                    
+                } else {
+                    swal({
+                        title: "Invalid Submission",
+                        text: "Sorry Your Submission is Failed, Kindly Contact Adminstrator",
+                        icon: "error",
+
+                    })
+                }
+            }
+        })
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#id_answer_rating").change(function () {
+
+            check_rating();
+
+        });
+
+    });
+</script>
+
 {% endblock %}
