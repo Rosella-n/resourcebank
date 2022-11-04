@@ -287,3 +287,9 @@ def answers(request,pk):
 
 
     return render(request, 'main_bank/view_answers.html',{'questions':questions, 'answers':answers, 'form':form})
+
+
+def display_answers(request,pk): 
+    
+    answers= Answers.objects.filter(pk=pk)
+    return render(request, 'main_bank/display_answers.html', {'answers':answers})
