@@ -53,3 +53,14 @@ class TestsaveForm(forms.ModelForm):
     class Meta:
         model = Testsave
         fields = [ 'suggestion','add_file']
+
+
+class UploadFileForm(forms.ModelForm):
+    Title = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows':\
+    '10','columns': '60',}))
+    Title.required=True
+    Title.label='Type your title and keywords here:'
+
+    class Meta:
+        model = Testsave
+        fields = [ 'suggestion','add_file']

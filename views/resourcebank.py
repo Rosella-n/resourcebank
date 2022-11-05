@@ -293,3 +293,21 @@ def display_answers(request,pk):
     
     answers= Answers.objects.filter(pk=pk)
     return render(request, 'main_bank/display_answers.html', {'answers':answers})
+
+def upload_file(request):
+    user_email=request.user.email
+    user=User.objects.get(email=user_email)
+    # user_info=User_Info.objects.get(email=user_email)
+    # print(user)
+    form = TestsaveForm(request.POST or None,request.FILES)
+    if request.method == 'POST':
+        
+        form = TestsaveForm(request.POST or None,request.FILES)
+        if form.is_valid():  
+            form.save()
+            sweetify.info(request, 'Success!', button='Ok', persistent=True, text='Successfully saved your question',)
+            
+        else:
+            form = TestsaveForm()
+       
+    return render(request, 'main_bank/testsave.html', {'form':form})

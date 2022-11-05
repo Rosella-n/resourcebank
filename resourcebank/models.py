@@ -83,4 +83,13 @@ class Testsave(models.Model):
         return self.suggestion
 
 
+class UploadFile(models.Model):
+   title=models.TextField(blank=True, null=True)
+   add_file=models.FileField(upload_to='answer_attachment/',null=True,blank=True)
+   class Meta:
+        verbose_name = _('Testsave')
+        verbose_name_plural = _('Testsave')
+        ordering = ['pk']
 
+   def __str__(self):
+        return self.suggestion
