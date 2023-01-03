@@ -1,5 +1,9 @@
 from django import forms
-from resourcebank. models import (Questions,Answers,Testsave)
+from resourcebank. models import (Questions,Answers,Testsave,UploadFile)
+from validators import (imagevalidator,pdfvalidator)
+
+
+
 class QuestionsForm(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows':\
     '7','columns': '3',}))
@@ -56,11 +60,12 @@ class TestsaveForm(forms.ModelForm):
 
 
 class UploadFileForm(forms.ModelForm):
-    Title = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows':\
+    title = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows':\
     '10','columns': '60',}))
-    Title.required=True
-    Title.label='Type your title and keywords here:'
+    title.required=True
+    title.label='Type your title and keywords here:'
+    add_file = forms.FileField(validators=[pdfvalidator])
 
     class Meta:
-        model = Testsave
-        fields = [ 'suggestion','add_file']
+        model = UploadFile
+        fields = [ 'title','add_file']

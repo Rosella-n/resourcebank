@@ -16,7 +16,7 @@ from rest_framework.authtoken.models import Token
 
 import shortuuid
 from django.core.validators import MinValueValidator
-from validators import (pdfvalidator,imagevalidator)
+# from validators import (pdfvalidator,imagevalidator)
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance, created=False,  **kwargs):
     

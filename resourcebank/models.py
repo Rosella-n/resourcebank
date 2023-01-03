@@ -4,6 +4,7 @@ from tkinter import CASCADE
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from authenticate.models import User
+from validators import (imagevalidator,pdfvalidator)
 # Create your models here.
 
 class Questions(models.Model):
@@ -12,7 +13,7 @@ class Questions(models.Model):
    updated_on= models.DateTimeField(auto_now=True)
    author= models.ForeignKey(User,on_delete=models.CASCADE, null=False, blank=False)
    rating = models.ForeignKey("QuestionRating",on_delete=models.DO_NOTHING, null=True, blank=True)
-   
+   file=models.FileField(upload_to='question_attachment',null=True,blank=True)
    class Meta:
         verbose_name = _('Questions')
         verbose_name_plural = _('Questions')
@@ -85,11 +86,11 @@ class Testsave(models.Model):
 
 class UploadFile(models.Model):
    title=models.TextField(blank=True, null=True)
-   add_file=models.FileField(upload_to='answer_attachment/',null=True,blank=True)
+   add_file=models.FileField(upload_to='material_upload/',null=True,blank=True,)
    class Meta:
-        verbose_name = _('Testsave')
-        verbose_name_plural = _('Testsave')
+        verbose_name = _('UploadFile')
+        verbose_name_plural = _('UploadFiles')
         ordering = ['pk']
 
    def __str__(self):
-        return self.suggestion
+        return self.title

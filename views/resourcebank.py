@@ -2,15 +2,19 @@ from multiprocessing import context
 from urllib.request import Request
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from resourcebank.forms import QuestionsForm,EditQuestionsForm, AnswerForm, TestsaveForm
-from resourcebank.models import Answers, Questions,AnswerRating,QuestionRating
+from resourcebank.forms import QuestionsForm,EditQuestionsForm, AnswerForm, TestsaveForm,UploadFileForm
+from resourcebank.models import Answers, Questions,AnswerRating,QuestionRating,UploadFile
 from authenticate.models import User,User_Info
 from django.contrib import messages
 import sweetify
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 from django.http import JsonResponse
 from rest_framework import status
 from django.db.models import Q,Avg, Count, Min, Sum
+import os
+from django.conf import settings
+
+
 
 @login_required
 def questions(request): 
@@ -299,15 +303,28 @@ def upload_file(request):
     user=User.objects.get(email=user_email)
     # user_info=User_Info.objects.get(email=user_email)
     # print(user)
-    form = TestsaveForm(request.POST or None,request.FILES)
+    form = UploadFileForm(request.POST or None,request.FILES)
     if request.method == 'POST':
-        
-        form = TestsaveForm(request.POST or None,request.FILES)
+        # print (request.FILES)
+        form = UploadFileForm(request.POST or None,request.FILES)
         if form.is_valid():  
             form.save()
-            sweetify.info(request, 'Success!', button='Ok', persistent=True, text='Successfully saved your question',)
+            sweetify.info(request, 'Success!', button='Ok', persistent=True, text='Upload successful',)
             
         else:
-            form = TestsaveForm()
+            form = UploadFileForm()
        
-    return render(request, 'main_bank/testsave.html', {'form':form})
+    return render(request, 'main_bank/upload_file.html', {'form':form})
+
+
+def download_file(request):
+    context = UploadFile.objects.all()
+    return render(request, 'main_bank/download_file.html',{'upload':context})
+
+def download_func(request,path):
+    file_path= os.path.join(settings.MEDIA_ROOT,path)
+    if os.path.exists(file_path):
+        with open(file_path,'rb')as fh:
+            response=HttpResponse(fh.read(),content_type="application/add_file")
+            response['Content-Dispositions']='inline;filename='+os.path.basename(file_path)
+    raise Http404

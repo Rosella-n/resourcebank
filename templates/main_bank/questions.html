@@ -2,12 +2,6 @@
 {% block content %}
 
 <br>
-<div class="container-fluid">
-    <form class="d-flex">
-        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-info" type="submit">Search</button><br><br>
-    </form>
-</div>
 <form method="post" id="askquestionsform" class="needs-validation">
     {% csrf_token %}
     {{ form.description.label }}

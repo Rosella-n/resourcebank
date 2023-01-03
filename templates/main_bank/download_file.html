@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<table id="example1" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>S/N</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+  { % for upload in context % } 
+
+<tr id="description">
+    <td>{{ forloop.counter}}</td>
+    <td>
+        <h4>{{upload.title}}</h4>
+    </td>
+   
+    <td>
+        <a href="{{upload.add_file.url}}" download="{{upload.add_file.url}}">Download</a>
+
+    </td>
+</tr>
+  <!-- <h2>{{upload.title}}</h2>
+  <a href="{{upload.add_file.url}}" download="{{upload.add_file.url}}">Download</a> -->
+  { % endfor % }
+
+
+{% endblock %}
